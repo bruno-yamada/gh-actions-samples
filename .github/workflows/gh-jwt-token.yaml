@@ -18,7 +18,6 @@ jobs:
         RESP=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
           "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=my-choice-of-audience")
         JWT=$(echo $RESP | jq -r .value)
-        echo $JWT | base64
         JWT_PAYLOAD=$(echo $JWT | cut -d. -f2)
         echo $JWT_PAYLOAD | base64 -d | jq
 
