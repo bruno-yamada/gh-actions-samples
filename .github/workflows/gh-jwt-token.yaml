@@ -20,5 +20,5 @@ jobs:
         JWT=$(echo $RESP | jq -r .value)
         echo $JWT | base64
         JWT_PAYLOAD=$(echo $JWT | cut -d. -f2)
-        echo $JWT_PAYLOAD | jq
+        echo $JWT_PAYLOAD | base64 -d | jq
 
